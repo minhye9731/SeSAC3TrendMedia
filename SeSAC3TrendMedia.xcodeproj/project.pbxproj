@@ -32,6 +32,8 @@
 		0EE6050D28868FEA00CC0CE2 /* ShoppingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE6050C28868FEA00CC0CE2 /* ShoppingTableViewCell.swift */; };
 		0EE6050F2886901900CC0CE2 /* ShoppingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE6050E2886901900CC0CE2 /* ShoppingTableViewController.swift */; };
 		0EE605112886AE0300CC0CE2 /* UITableViewController + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE605102886AE0300CC0CE2 /* UITableViewController + extension.swift */; };
+		0EE605132886C45600CC0CE2 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE605122886C45600CC0CE2 /* SearchTableViewController.swift */; };
+		0EE605152886C4B000CC0CE2 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE605142886C4B000CC0CE2 /* SearchTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +64,8 @@
 		0EE6050C28868FEA00CC0CE2 /* ShoppingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewCell.swift; sourceTree = "<group>"; };
 		0EE6050E2886901900CC0CE2 /* ShoppingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewController.swift; sourceTree = "<group>"; };
 		0EE605102886AE0300CC0CE2 /* UITableViewController + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewController + extension.swift"; sourceTree = "<group>"; };
+		0EE605122886C45600CC0CE2 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
+		0EE605142886C4B000CC0CE2 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +154,8 @@
 				0EE604FA288643FD00CC0CE2 /* TrendViewController.swift */,
 				0EE604F8288640B600CC0CE2 /* TrendSettingTableViewController.swift */,
 				0EE604FC2886441500CC0CE2 /* SearchViewController.swift */,
+				0EE605122886C45600CC0CE2 /* SearchTableViewController.swift */,
+				0EE605142886C4B000CC0CE2 /* SearchTableViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -249,9 +255,11 @@
 				0EC419BC2884FE3C00009E39 /* SettingTableViewController.swift in Sources */,
 				0EE6050528864DA500CC0CE2 /* BucketlistTableViewCell.swift in Sources */,
 				0EC419C22885536D00009E39 /* SettingAsTaskTableViewController.swift in Sources */,
+				0EE605132886C45600CC0CE2 /* SearchTableViewController.swift in Sources */,
 				0EE605012886479B00CC0CE2 /* UITextField+Extension.swift in Sources */,
 				0EE605112886AE0300CC0CE2 /* UITableViewController + extension.swift in Sources */,
 				0EE6050328864B9200CC0CE2 /* BucketlistTableViewController.swift in Sources */,
+				0EE605152886C4B000CC0CE2 /* SearchTableViewCell.swift in Sources */,
 				0EC419AA2884DE1000009E39 /* ViewController.swift in Sources */,
 				0EC419A62884DE1000009E39 /* AppDelegate.swift in Sources */,
 				0EE604FF2886451F00CC0CE2 /* UIViewController+Extension.swift in Sources */,

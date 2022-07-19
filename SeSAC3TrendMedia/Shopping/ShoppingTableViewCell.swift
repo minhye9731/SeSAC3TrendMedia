@@ -16,9 +16,9 @@ class ShoppingTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        cellBackground.layer.cornerRadius = 6
+        cellBackground.layer.cornerRadius = 7
         cellBackground.clipsToBounds = true
-        cellBackground.backgroundColor = .systemGray5
+        cellBackground.backgroundColor = .systemGray6
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

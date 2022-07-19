@@ -25,7 +25,7 @@
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 </view>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z5l-H8-2bX">
-                                    <rect key="frame" x="41" y="35.5" width="262" height="34"/>
+                                    <rect key="frame" x="42" y="35.5" width="260" height="34"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                     <connections>
@@ -33,7 +33,7 @@
                                     </connections>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ItA-Je-awq">
-                                    <rect key="frame" x="313" y="36.5" width="60" height="32"/>
+                                    <rect key="frame" x="312" y="36.5" width="60" height="32"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="32" id="J0C-Qv-oz8"/>
                                         <constraint firstAttribute="width" constant="60" id="ZTr-UB-hU2"/>
@@ -51,8 +51,8 @@
                                 <constraint firstItem="Pvw-ne-T2E" firstAttribute="height" secondItem="suC-rw-HNG" secondAttribute="height" multiplier="0.6" id="Bgf-ex-W9y"/>
                                 <constraint firstItem="Z5l-H8-2bX" firstAttribute="centerY" secondItem="Pvw-ne-T2E" secondAttribute="centerY" id="Hlc-az-i40"/>
                                 <constraint firstItem="ItA-Je-awq" firstAttribute="centerY" secondItem="Pvw-ne-T2E" secondAttribute="centerY" id="Lna-NC-vEq"/>
-                                <constraint firstItem="Pvw-ne-T2E" firstAttribute="leading" secondItem="suC-rw-HNG" secondAttribute="leading" constant="21" id="Ubb-vh-6cI"/>
-                                <constraint firstAttribute="trailing" secondItem="Pvw-ne-T2E" secondAttribute="trailing" constant="21" id="Vqr-nw-Tfr"/>
+                                <constraint firstItem="Pvw-ne-T2E" firstAttribute="leading" secondItem="suC-rw-HNG" secondAttribute="leading" constant="22" id="Ubb-vh-6cI"/>
+                                <constraint firstAttribute="trailing" secondItem="Pvw-ne-T2E" secondAttribute="trailing" constant="22" id="Vqr-nw-Tfr"/>
                                 <constraint firstItem="ItA-Je-awq" firstAttribute="leading" secondItem="Z5l-H8-2bX" secondAttribute="trailing" constant="10" id="akg-J0-Zh7"/>
                                 <constraint firstItem="Z5l-H8-2bX" firstAttribute="leading" secondItem="Pvw-ne-T2E" secondAttribute="leading" constant="20" id="kmi-Is-ePq"/>
                                 <constraint firstItem="Pvw-ne-T2E" firstAttribute="centerY" secondItem="suC-rw-HNG" secondAttribute="centerY" id="qQd-Nq-eRF"/>
@@ -67,7 +67,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UKw-2S-ysG">
-                                            <rect key="frame" x="7.5" y="1" width="359" height="57"/>
+                                            <rect key="frame" x="7.5" y="2.5" width="359" height="54"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         </view>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Iq-1f-CAB">
@@ -99,7 +99,7 @@
                                         <constraint firstItem="aup-dg-8le" firstAttribute="centerY" secondItem="N2f-nn-Cew" secondAttribute="centerY" id="JvP-EF-KQ3"/>
                                         <constraint firstItem="6Iq-1f-CAB" firstAttribute="centerY" secondItem="N2f-nn-Cew" secondAttribute="centerY" id="V3f-q8-peg"/>
                                         <constraint firstItem="UKw-2S-ysG" firstAttribute="width" secondItem="N2f-nn-Cew" secondAttribute="width" multiplier="0.96" id="eC7-br-0Af"/>
-                                        <constraint firstItem="UKw-2S-ysG" firstAttribute="height" secondItem="N2f-nn-Cew" secondAttribute="height" multiplier="0.96" id="eSM-2P-mdt"/>
+                                        <constraint firstItem="UKw-2S-ysG" firstAttribute="height" secondItem="N2f-nn-Cew" secondAttribute="height" multiplier="0.92" id="eSM-2P-mdt"/>
                                         <constraint firstItem="UKw-2S-ysG" firstAttribute="centerY" secondItem="N2f-nn-Cew" secondAttribute="centerY" id="jIl-df-CrY"/>
                                         <constraint firstItem="mzS-C9-TvF" firstAttribute="centerY" secondItem="N2f-nn-Cew" secondAttribute="centerY" id="sFj-Lp-Ysl"/>
                                         <constraint firstItem="UKw-2S-ysG" firstAttribute="centerX" secondItem="N2f-nn-Cew" secondAttribute="centerX" id="yuh-QQ-xo9"/>

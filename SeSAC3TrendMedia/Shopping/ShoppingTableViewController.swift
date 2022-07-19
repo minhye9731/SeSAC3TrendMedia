@@ -24,9 +24,9 @@ class ShoppingTableViewController: UITableViewController {
     
     func setUI() {
         
-        topBackground.layer.cornerRadius = 6
+        topBackground.layer.cornerRadius = 7
         topBackground.clipsToBounds = true
-        topBackground.backgroundColor = .systemGray5
+        topBackground.backgroundColor = .systemGray6
         
         // textfield
         userTextField.keyboardType = .default
@@ -40,11 +40,11 @@ class ShoppingTableViewController: UITableViewController {
         userTextField.autocapitalizationType = .none
         
         // button
-        addButton.backgroundColor = .systemGray3
+        addButton.backgroundColor = .systemGray4
         addButton.layer.cornerRadius = 5
         addButton.clipsToBounds = true
         addButton.setTitle("추가", for: .normal)
-        addButton.setTitleColor(.darkGray, for: .normal)
+        addButton.setTitleColor(.black, for: .normal)
         addButton.titleLabel?.font = UIFont.systemFont(ofSize: 7)
         
     }
@@ -62,14 +62,6 @@ class ShoppingTableViewController: UITableViewController {
         shoppingList.append(sender.text ?? "통장잔고도 확인하기")
         tableView.reloadData()
     }
-    
-    
-    
-    
-//    // MARK: - 빈 공간 클릭시 키보드 내려감
-//    @IBAction func TapGestureTapped(_ sender: UITapGestureRecognizer) {
-//        view.endEditing(true)
-//    }
     
     // MARK: - 셀의 갯수
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

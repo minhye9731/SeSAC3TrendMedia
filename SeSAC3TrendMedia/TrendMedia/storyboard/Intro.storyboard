@@ -15,7 +15,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WBf-Fl-tjQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1079" y="-629"/>
+            <point key="canvasLocation" x="1544" y="-644"/>
         </scene>
         <!--TrendSetting-->
         <scene sceneID="Bf1-6y-WgE">
@@ -35,7 +35,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H2A-UD-Qc3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1166" y="-350"/>
+            <point key="canvasLocation" x="1576" y="-337"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="u9Q-0r-HOP">
@@ -43,6 +43,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="izN-Be-5Sa" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UYz-8t-44b">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
