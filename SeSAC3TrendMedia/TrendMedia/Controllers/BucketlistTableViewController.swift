@@ -9,6 +9,8 @@ import UIKit
 
 class BucketlistTableViewController: UITableViewController {
 
+    static let identifier = "BucketlistTableViewController"
+    
     @IBOutlet weak var userTextField: UITextField!
     
     var list = ["범죄도시2", "탑건", "토르"]
@@ -16,16 +18,47 @@ class BucketlistTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = "버킷리스트"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(closeButtonTapped))
+        
         tableView.rowHeight = 88
         
         list.append("마녀")
         list.append("ㅁㅁㅁ")
     }
     
+    @objc
+    func closeButtonTapped() {
+        self.dismiss(animated: true)
+    }
     
     @IBAction func userTextFieldReturn(_ sender: UITextField) {
-        list.append(sender.text!)
-        print(list)
+        
+        // case1.
+//        list.append(sender.text!)
+//        print(list)
+        
+        // case2. if let 구문 활용
+        if let value = sender.text?.trimmingCharacters(in: .whitespacesAndNewlines), !value.isEmpty, (2...6).contains(value.count) { //. 알아ㅣ보기
+            list.append(value)
+            tableView.reloadData()
+        } else {
+            // n토스트 띄우기
+        }
+        
+        // case 3. guard 구문으로 활용
+        // 위와 동일한 구분을 guard 구문으로 바꿔보기
+        guard let value = sender.text?.trimmingCharacters(in: .whitespacesAndNewlines), !value.isEmpty, (2...6).contains(value.count)
+        else {
+            // 얼럿이나 포스트를 통해서 빈칸을 입력했다, 글자수가 많다 등을 사용자에게 알려줘야 함
+            return
+        }
+        list.append(value)
+        tableView.reloadData()
+        
+        
+    
+        
         
         // 중요!!
         tableView.reloadData() // 섹션과 셀에 대한 데이터를 다시 그려줌.
@@ -38,7 +71,7 @@ class BucketlistTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BucketlistTableViewCell", for: indexPath) as! BucketlistTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: BucketlistTableViewCell.identifier, for: indexPath) as! BucketlistTableViewCell
         cell.bucketlistLabel.text = list[indexPath.row]
         cell.bucketlistLabel.font = .boldSystemFont(ofSize: 18)
         

@@ -9,6 +9,9 @@ import UIKit
 
 class SearchTableViewController: UITableViewController {
 
+    var movieList = MovieInfo()
+    // movieinfo 데이터 안에 기본값이 있어서 매개변수가 안나옴
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 114
@@ -16,7 +19,7 @@ class SearchTableViewController: UITableViewController {
     
     // MARK: - 셀의 갯수
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return movieList.movie.count
     }
     
     // MARK: - 셀의 UI 및 데이터 등록하기
@@ -24,20 +27,29 @@ class SearchTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath) as! SearchTableViewCell
         
+        
         // 영화 포스터 이미지
         cell.posterImageView.image = UIImage(named: "해리포터와불의잔.png")
         
-        // 영화제목 라벨 데이터
-        cell.movieTitleLabel.text = "해리 포터와 불의 잔(Harry Potter and the Goblet of Fire)"
-        
-        // 영화 출시일 데이터
-        cell.movieReleasedDateLabel.text = "2005. 11. 16 | EN"
-        
-        // 영화 시놉시스 데이터
-        cell.movieSynopsisLabel.text = "요즘 들어 매일 꾸는 악몽 때문에 이마의 상처에 더욱 통증을 느끼는 해리는 친구 론과 헤르미온느와 함께 쿼디치 월드컵에 참가해 악몽에서 벗어날 수 있게 돼 마냥 기쁘다. 그러나 퀴디치 캠프장 근방 하늘에 불길한 기운이 나타난다. 바로 마왕 볼드모트의 상징인 '어둠의 표식'이 나타난 것."
+        let data = movieList.movie[indexPath.row]
+        // 우리가 가져올 프로퍼티를 가져오기 위해 movieList.movie를 해준다
+        // 이부분이 항상 헷갈려서 어려웠다.
+        cell.setCellUI(data: data)
+
+ 
         
         return cell
     }
-
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        print("didSelectRowAt") // 동작하지 않는다면? 1. TableView가 noSelection 2. 셀 위에 전체 버튼
+        let sb = UIStoryboard(name: "Trend", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "RecommendCollectionViewController") as! RecommendCollectionViewController
+        
+        // navigationcontroller 붙어있는지 확인해서 붙어있으면 push해라.
+        // navigationcontroller없으면 그냥 cell 아무일도 안일어난다
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 
 }
