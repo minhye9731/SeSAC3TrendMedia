@@ -46,20 +46,18 @@ class ShoppingTableViewController: UITableViewController {
         addButton.setTitle("추가", for: .normal)
         addButton.setTitleColor(.black, for: .normal)
         addButton.titleLabel?.font = UIFont.systemFont(ofSize: 7)
-        
     }
     
     
     // MARK: - [추가] 버튼 클릭시 액션
     @IBAction func addButtonTapped(_ sender: UIButton) {
-        shoppingList.append(userTextField.text ?? "통장잔고도 확인하기")
+        shoppingList.append((userTextField.text == "" ? "장바구니 챙기기" : userTextField.text)!)
         tableView.reloadData()
         view.endEditing(true)
     }
     
-    
     @IBAction func userTextFieldTapped(_ sender: UITextField) {
-        shoppingList.append(sender.text ?? "통장잔고도 확인하기")
+        shoppingList.append((userTextField.text == "" ? "장바구니 챙기기" : userTextField.text)!)
         tableView.reloadData()
     }
     
