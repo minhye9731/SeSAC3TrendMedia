@@ -17,10 +17,20 @@ import Kingfisher
 
 class RecommendCollectionViewController: UICollectionViewController {
     
+    // 1. 값 전달 - 데이터를 받을 공간(프로퍼티) 생성
+    var movieData: Movie?
+    // 따로 따로 프로퍼티 생성하지 않고 하나의 구조체 전체를 전달 받는 이유는? - 활용도, 깔끔함 등
+    
+    
     var image = "https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20220620_61%2F1655692158584QeRHN_JPEG%2Fmovie_image.jpg"
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // 3. 값 전달 - 프로퍼티 값을 뷰에 표현
+//        title = movieTitle == nil ? "데이터 없음" : movieTitle!
+        title = movieData?.title
+        
 
         // 화면에 뜨기전에 크기 정해줘야 함
         // 컬렉션뷰의 셀 크기, 셀 사이 간격 등 설정 (estimate size는 none으로 설정)

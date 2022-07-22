@@ -25,6 +25,9 @@ class TrendTableViewController: UITableViewController {
         //2.
         let vc = sb.instantiateViewController(withIdentifier: BucketlistTableViewController.identifier) as! BucketlistTableViewController
         
+        // (2) 값전달
+        vc.textfieldPlaceholder = "영화"
+        
         //3.
         self.present(vc, animated: true)
     }
@@ -40,6 +43,10 @@ class TrendTableViewController: UITableViewController {
         //2.5 present 시 화면 전환 방식 설정 (옵션)
         vc.modalPresentationStyle = .fullScreen
         
+        // (2) 값전달
+        vc.userTextField.placeholder = sender.currentTitle
+        
+        
         //3.
         self.present(vc, animated: true)
     }
@@ -52,6 +59,11 @@ class TrendTableViewController: UITableViewController {
         
         //2.
         let vc = sb.instantiateViewController(withIdentifier: BucketlistTableViewController.identifier) as! BucketlistTableViewController
+        
+        // (2) 값전달
+        vc.textfieldPlaceholder = "도서"
+        
+        
         // 2.5 코드로 네비게이션 컨트롤러 임베드하기
         let nav = UINavigationController(rootViewController: vc)
         

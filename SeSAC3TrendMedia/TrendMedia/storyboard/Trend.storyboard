@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -103,7 +104,37 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8DO-4R-kYX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1037.68115942029" y="20.758928571428569"/>
+            <point key="canvasLocation" x="320" y="37"/>
+        </scene>
+        <!--ViewController-->
+        <scene sceneID="ahc-qS-C6I">
+            <objects>
+                <viewController storyboardIdentifier="ViewController" title="ViewController" id="uwN-0V-WJE" customClass="ViewController" customModule="SeSAC3TrendMedia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zQs-CE-nCD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="환영합니다@@" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xa6-di-PU2">
+                                <rect key="frame" x="107" y="437.5" width="200" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="qak-WT-9xu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Qht-7o-NsA"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Xa6-di-PU2" firstAttribute="centerY" secondItem="zQs-CE-nCD" secondAttribute="centerY" id="AZd-ss-hzT"/>
+                            <constraint firstItem="Xa6-di-PU2" firstAttribute="centerX" secondItem="zQs-CE-nCD" secondAttribute="centerX" id="zLi-9u-0Ii"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zTG-fd-yT0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1102.8985507246377" y="27.455357142857142"/>
         </scene>
         <!--RecommendCollectionViewController-->
         <scene sceneID="7xC-SJ-87g">
@@ -180,8 +211,8 @@
                                     <rect key="frame" x="157" y="190" width="100" height="31"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" systemColor="systemYellowColor"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="드라마"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="드라마"/>
                                     <connections>
                                         <action selector="dramaButtonTapped:" destination="SlU-3j-P7i" eventType="touchUpInside" id="YGA-os-aqC"/>
                                     </connections>

@@ -15,7 +15,28 @@ class SearchTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 114
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "처음으로", style: .plain, target: self, action: #selector(resetButtonClicked))
     }
+    
+    // MARK: - 초기화되면서 첫화면으로 이동해주는 코드
+    @objc
+    func resetButtonClicked() {
+        //iOS13+ SceneDelegate 쓸 때 동작하는 코드
+        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        // 씬들이 연결되어 있는 것 중에 하나를 데리고 와라.
+        
+        let sceneDelegate = windowScene?.delegate as? SceneDelegate
+        // SceneDelegate로 접근함
+        
+        let sb = UIStoryboard(name: "Trend", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        
+        sceneDelegate?.window?.rootViewController = vc
+        sceneDelegate?.window?.makeKeyAndVisible()
+        
+    }
+    
     
     // MARK: - 셀의 갯수
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -46,6 +67,13 @@ class SearchTableViewController: UITableViewController {
         print("didSelectRowAt") // 동작하지 않는다면? 1. TableView가 noSelection 2. 셀 위에 전체 버튼
         let sb = UIStoryboard(name: "Trend", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "RecommendCollectionViewController") as! RecommendCollectionViewController
+        
+        // 2. 값 전달 - vc가 가지고 있는 프로퍼티에 데이터 추가
+//        let title = movieList.movie[indexPath.row].title
+//        let release = movieList.movie[indexPath.row].releaseDate
+//        vc.movieTitle = "\(title)(\(release))"
+        vc.movieData = movieList.movie[indexPath.row]
+        
         
         // navigationcontroller 붙어있는지 확인해서 붙어있으면 push해라.
         // navigationcontroller없으면 그냥 cell 아무일도 안일어난다

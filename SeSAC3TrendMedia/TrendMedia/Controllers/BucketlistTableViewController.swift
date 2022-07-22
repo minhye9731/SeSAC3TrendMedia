@@ -8,6 +8,12 @@
 import UIKit
 
 class BucketlistTableViewController: UITableViewController {
+    
+    // (1) 값전달 - 플레이스 홀더 문구 가져올 변수
+    var textfieldPlaceholder: String?
+    // 옵셔널 스트링 타입으로 선언하더라도 오류가 뜨지 않는 이유는?
+    // placeholder 자체가 옵셔널이라면?
+    // 하지만 String Interpolation이라면?
 
     static let identifier = "BucketlistTableViewController"
     
@@ -17,6 +23,8 @@ class BucketlistTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        userTextField.placeholder = "\( textfieldPlaceholder)를 입력해보세요."
         
         navigationItem.title = "버킷리스트"
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(closeButtonTapped))
