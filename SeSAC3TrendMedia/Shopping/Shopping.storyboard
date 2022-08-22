@@ -68,21 +68,31 @@
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UKw-2S-ysG">
                                             <rect key="frame" x="7.5" y="2.5" width="359" height="54"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B9i-Oq-eAe">
+                                                    <rect key="frame" x="12" y="7" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="9eL-yR-DHA"/>
+                                                        <constraint firstAttribute="height" constant="40" id="s9c-1b-d0T"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mzS-C9-TvF">
+                                                    <rect key="frame" x="64" y="16.5" width="41.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        </view>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Iq-1f-CAB">
-                                            <rect key="frame" x="20" y="15.5" width="28" height="28"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="28" id="4Te-jn-jBh"/>
-                                                <constraint firstAttribute="height" constant="28" id="w87-Ar-Mjw"/>
+                                                <constraint firstItem="B9i-Oq-eAe" firstAttribute="centerY" secondItem="UKw-2S-ysG" secondAttribute="centerY" id="WNz-hu-E2G"/>
+                                                <constraint firstItem="B9i-Oq-eAe" firstAttribute="leading" secondItem="UKw-2S-ysG" secondAttribute="leading" constant="12" id="Wkx-FY-2Du"/>
+                                                <constraint firstItem="mzS-C9-TvF" firstAttribute="leading" secondItem="B9i-Oq-eAe" secondAttribute="trailing" constant="12" id="vZo-sU-iv6"/>
+                                                <constraint firstItem="mzS-C9-TvF" firstAttribute="centerY" secondItem="UKw-2S-ysG" secondAttribute="centerY" id="yyu-WA-Vf9"/>
                                             </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mzS-C9-TvF">
-                                            <rect key="frame" x="63" y="19" width="41.5" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        </view>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aup-dg-8le">
                                             <rect key="frame" x="310" y="7.5" width="44" height="44"/>
                                             <constraints>
@@ -94,21 +104,17 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="aup-dg-8le" firstAttribute="trailing" secondItem="N2f-nn-Cew" secondAttribute="trailing" constant="-20" id="7Mv-98-LhB"/>
-                                        <constraint firstItem="mzS-C9-TvF" firstAttribute="leading" secondItem="6Iq-1f-CAB" secondAttribute="trailing" constant="15" id="DQZ-jX-cx4"/>
-                                        <constraint firstItem="6Iq-1f-CAB" firstAttribute="leading" secondItem="N2f-nn-Cew" secondAttribute="leading" constant="20" id="G6T-O5-mlo"/>
                                         <constraint firstItem="aup-dg-8le" firstAttribute="centerY" secondItem="N2f-nn-Cew" secondAttribute="centerY" id="JvP-EF-KQ3"/>
-                                        <constraint firstItem="6Iq-1f-CAB" firstAttribute="centerY" secondItem="N2f-nn-Cew" secondAttribute="centerY" id="V3f-q8-peg"/>
                                         <constraint firstItem="UKw-2S-ysG" firstAttribute="width" secondItem="N2f-nn-Cew" secondAttribute="width" multiplier="0.96" id="eC7-br-0Af"/>
                                         <constraint firstItem="UKw-2S-ysG" firstAttribute="height" secondItem="N2f-nn-Cew" secondAttribute="height" multiplier="0.92" id="eSM-2P-mdt"/>
                                         <constraint firstItem="UKw-2S-ysG" firstAttribute="centerY" secondItem="N2f-nn-Cew" secondAttribute="centerY" id="jIl-df-CrY"/>
-                                        <constraint firstItem="mzS-C9-TvF" firstAttribute="centerY" secondItem="N2f-nn-Cew" secondAttribute="centerY" id="sFj-Lp-Ysl"/>
                                         <constraint firstItem="UKw-2S-ysG" firstAttribute="centerX" secondItem="N2f-nn-Cew" secondAttribute="centerX" id="yuh-QQ-xo9"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="bookMarkButton" destination="aup-dg-8le" id="CpC-kb-Hr2"/>
                                     <outlet property="cellBackground" destination="UKw-2S-ysG" id="rT6-hu-Q3z"/>
-                                    <outlet property="checkBoxImage" destination="6Iq-1f-CAB" id="Ju6-LG-JZU"/>
+                                    <outlet property="checkBoxButton" destination="B9i-Oq-eAe" id="e9u-il-ZMk"/>
                                     <outlet property="shoppingListLabel" destination="mzS-C9-TvF" id="dpR-ix-3cv"/>
                                 </connections>
                             </tableViewCell>
@@ -127,7 +133,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tUW-bi-CaM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1019" y="-9"/>
+            <point key="canvasLocation" x="1018.840579710145" y="-9.375"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wbN-XU-iIv">
