@@ -15,9 +15,6 @@ class SettingTableViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.rowHeight = 80
-        
-        
-
     }
 
     

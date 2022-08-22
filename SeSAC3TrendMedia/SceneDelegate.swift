@@ -18,24 +18,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // true이면 ViewController, false이면 SearchMovieTableViewController
         
         guard let scene = (scene as? UIWindowScene) else { return }
-        window = UIWindow(windowScene: scene)
-        
-        if UserDefaults.standard.bool(forKey: "First") {
-
-            let sb = UIStoryboard(name: "Trend", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-            
-            window?.rootViewController = vc
-
-        } else {
-            
-            let sb = UIStoryboard(name: "TrendSearch", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: "SearchTableViewController") as! SearchTableViewController
-            
-            window?.rootViewController = UINavigationController(rootViewController: vc)
-        
-        }
-        window?.makeKeyAndVisible() // 중요코드
+//        window = UIWindow(windowScene: scene)
+//
+//        if UserDefaults.standard.bool(forKey: "First") {
+//
+//            let sb = UIStoryboard(name: "Trend", bundle: nil)
+//            let vc = sb.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+//
+//            window?.rootViewController = vc
+//
+//        } else {
+//
+//            let sb = UIStoryboard(name: "TrendSearch", bundle: nil)
+//            let vc = sb.instantiateViewController(withIdentifier: "SearchTableViewController") as! SearchTableViewController
+//            
+//            window?.rootViewController = UINavigationController(rootViewController: vc)
+//
+//        }
+//        window?.makeKeyAndVisible() // 중요코드
         
         
     }

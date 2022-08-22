@@ -6,12 +6,16 @@
 //
 
 import UIKit
+import RealmSwift // Realm 1. import RealmSwift
 
 class ShoppingTableViewController: UITableViewController {
 
     @IBOutlet weak var topBackground: UIView!
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var addButton: UIButton!
+    
+    let localRealm = try! Realm() // Realm 2. Realm테이블에 데이터를 CRUD할 때, Realm파일에 접근하는 상수 선언
+    var tasks: Results<UserShoppingList>! // Realm 3. Realm에서 읽어온 데이터를 담을 배열 선언
     
     var shoppingList = ["그립톡 구매하기", "사이다 구매", "아이패드 케이스 최저가 알아보기", "양말"]
     
@@ -20,10 +24,19 @@ class ShoppingTableViewController: UITableViewController {
         setUI()
         tableView.rowHeight = 60
         hideKeyboardWhenTappedBackground()
+        
+        // Realm 4. 배열에 Realm의 데이터 초기화
+        tasks = localRealm.objects(UserShoppingList.self).sorted(byKeyPath: "regDate", ascending: false)
+        print(tasks)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print(#function)
+        tableView.reloadData()
     }
     
     func setUI() {
-        
         topBackground.layer.cornerRadius = 7
         topBackground.clipsToBounds = true
         topBackground.backgroundColor = .systemGray6
@@ -48,12 +61,27 @@ class ShoppingTableViewController: UITableViewController {
         addButton.titleLabel?.font = UIFont.systemFont(ofSize: 7)
     }
     
-    
     // MARK: - [추가] 버튼 클릭시 액션
     @IBAction func addButtonTapped(_ sender: UIButton) {
-        shoppingList.append((userTextField.text == "" ? "장바구니 챙기기" : userTextField.text)!)
-        tableView.reloadData()
-        view.endEditing(true)
+        
+        let newList = (userTextField.text == "" ? "오늘 하루 감사하기" : userTextField.text)!
+        
+        let task = UserShoppingList(shoppingList: newList,
+                                    regDate: Date()) // => Record
+        
+        try! localRealm.write {
+            localRealm.add(task) // Create
+            
+            self.shoppingList.append(newList)
+            tableView.reloadData()
+            view.endEditing(true)
+            
+            print("Realm Succeed")
+        }
+        
+        //        shoppingList.append((userTextField.text == "" ? "장바구니 챙기기" : userTextField.text)!)
+        //        tableView.reloadData()
+        //        view.endEditing(true)
     }
     
     @IBAction func userTextFieldTapped(_ sender: UITextField) {
@@ -64,6 +92,7 @@ class ShoppingTableViewController: UITableViewController {
     // MARK: - 셀의 갯수
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return shoppingList.count
+//        return tasks.count
     }
     
     // MARK: - 셀의 UI 및 데이터 등록하기

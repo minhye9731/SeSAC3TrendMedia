@@ -12,14 +12,18 @@ class SearchTableViewController: UITableViewController {
     var movieList = MovieInfo()
     // movieinfo 데이터 안에 기본값이 있어서 매개변수가 안나옴
     
+    // MARK: - 뷰컨트롤러 생명주기
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 114
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "처음으로", style: .plain, target: self, action: #selector(resetButtonClicked))
+        
     }
+ 
     
-    // MARK: - 초기화되면서 첫화면으로 이동해주는 코드
+    // MARK: - 일반 액션
+    /// 초기화되면서 첫화면으로 이동해주는 코드
     @objc
     func resetButtonClicked() {
         //iOS13+ SceneDelegate 쓸 때 동작하는 코드
