@@ -27,8 +27,4 @@ class UserShoppingList: Object {
         self.favorite = false
         self.regDate = regDate
     }
-    
-    
-    
-    
 }
