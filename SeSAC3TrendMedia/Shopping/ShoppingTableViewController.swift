@@ -15,8 +15,13 @@ class ShoppingTableViewController: UITableViewController {
     @IBOutlet weak var addButton: UIButton!
     
     let localRealm = try! Realm() // Realm 2. Realm테이블에 데이터를 CRUD할 때, Realm파일에 접근하는 상수 선언
-    var tasks: Results<UserShoppingList>! // Realm 3. Realm에서 읽어온 데이터를 담을 배열 선언
     
+    var tasks: Results<UserShoppingList>! {
+        didSet {
+            tableView.reloadData()
+            print("Tasks Changed")
+        }
+    }
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,10 +91,15 @@ class ShoppingTableViewController: UITableViewController {
         // UIMenu 요소들
         var menuItems: [UIAction] {
             return [
-                UIAction(title: "할 일 기준으로 정렬하기", image: UIImage(systemName: "star.fill"), handler: { _ in print("1")}),
-                UIAction(title: "즐겨찾기 기준으로 정렬하기", image: UIImage(systemName: "star.fill"), handler: { _ in print("2")}),
-                UIAction(title: "구매완료 기준으로 정렬하기", image: UIImage(systemName: "star.fill"), handler: { _ in print("3")}),
-                UIAction(title: "제목순으로 정렬하기", image: UIImage(systemName: "star.fill"), handler: { _ in print("4")}),
+                UIAction(title: "쇼핑 리스트 기준으로 정렬하기", image: UIImage(systemName: "line.3.horizontal.decrease.circle"), handler: { _ in
+                    self.tasks = self.localRealm.objects(UserShoppingList.self).sorted(byKeyPath: "shoppingList", ascending: true)
+                    }),
+                UIAction(title: "즐겨찾기 항목 필터링하기", image: UIImage(systemName: "star.fill"), handler: { _ in
+                    self.tasks = self.localRealm.objects(UserShoppingList.self).filter("favorite == true")
+                }),
+                UIAction(title: "구매완료 항목 필터링하기", image: UIImage(systemName: "checkmark.square"), handler: { _ in
+                    self.tasks = self.localRealm.objects(UserShoppingList.self).filter("doneCheck == true")
+                }),
                 UIAction(title: "취소", attributes: .destructive, handler: { _ in print("취소버튼 클릭")})
             ]
         }
