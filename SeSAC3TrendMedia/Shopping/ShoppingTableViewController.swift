@@ -17,17 +17,18 @@ class ShoppingTableViewController: UITableViewController {
     let localRealm = try! Realm() // Realm 2. Realm테이블에 데이터를 CRUD할 때, Realm파일에 접근하는 상수 선언
     var tasks: Results<UserShoppingList>! // Realm 3. Realm에서 읽어온 데이터를 담을 배열 선언
     
-    var shoppingList = ["그립톡 구매하기", "사이다 구매", "아이패드 케이스 최저가 알아보기", "양말"]
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        setNav()
+        setBarButtonItem()
+        
         tableView.rowHeight = 60
         hideKeyboardWhenTappedBackground()
         
         // Realm 4. 배열에 Realm의 데이터 초기화
         tasks = localRealm.objects(UserShoppingList.self).sorted(byKeyPath: "regDate", ascending: false)
-        print(tasks)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,6 +37,7 @@ class ShoppingTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
+    // 이거 별도 view로 빼서 깔끔하게 정리하자!
     func setUI() {
         topBackground.layer.cornerRadius = 7
         topBackground.clipsToBounds = true
@@ -61,31 +63,53 @@ class ShoppingTableViewController: UITableViewController {
         addButton.titleLabel?.font = UIFont.systemFont(ofSize: 7)
     }
     
+    func setNav() {
+        self.navigationItem.title = "Shopping List"
+        self.navigationController?.navigationBar.tintColor = .black
+        
+        let navibarAppearance = UINavigationBarAppearance()
+        let barbuttonItemAppearance = UIBarButtonItemAppearance()
+        
+        navibarAppearance.backgroundColor = .clear
+        navibarAppearance.titleTextAttributes = [.foregroundColor: UIColor.black, .font: UIFont.systemFont(ofSize: 20, weight: .bold)]
+        
+        barbuttonItemAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.black, .backgroundColor: UIColor.clear, .font: UIFont.systemFont(ofSize: 14, weight: .regular)]
+        
+        self.navigationItem.scrollEdgeAppearance = navibarAppearance
+        self.navigationItem.standardAppearance = navibarAppearance
+        navibarAppearance.buttonAppearance = barbuttonItemAppearance
+    }
+    
+    
+    func setBarButtonItem() {
+        
+        // UIMenu 요소들
+        var menuItems: [UIAction] {
+            return [
+                UIAction(title: "할 일 기준으로 정렬하기", image: UIImage(systemName: "star.fill"), handler: { _ in print("1")}),
+                UIAction(title: "즐겨찾기 기준으로 정렬하기", image: UIImage(systemName: "star.fill"), handler: { _ in print("2")}),
+                UIAction(title: "구매완료 기준으로 정렬하기", image: UIImage(systemName: "star.fill"), handler: { _ in print("3")}),
+                UIAction(title: "제목순으로 정렬하기", image: UIImage(systemName: "star.fill"), handler: { _ in print("4")}),
+                UIAction(title: "취소", attributes: .destructive, handler: { _ in print("취소버튼 클릭")})
+            ]
+        }
+        
+        var menu: UIMenu {
+            return UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: menuItems)
+        }
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "", image: UIImage(systemName: "arrow.up.arrow.down"), primaryAction: nil, menu: menu)
+        
+    }
+    
     // MARK: - [추가] 버튼 클릭시 액션
     @IBAction func addButtonTapped(_ sender: UIButton) {
-        
-//        let newList = (userTextField.text == "" ? "오늘 하루 감사하기" : userTextField.text)!
-        
-//        let task = UserShoppingList(shoppingList: newList, regDate: Date()) // => Record
-        
-//        try! localRealm.write {
-//            localRealm.add(task) // (Creat) 데이터상 newList 생성
-//            tableView.reloadData()
-//            view.endEditing(true)
-            
-//            print("Realm Succeed")
-//            print(tasks)
-//        }
         addNewShoppingList()
     }
     
     @IBAction func userTextFieldTapped(_ sender: UITextField) {
-//        shoppingList.append((userTextField.text == "" ? "장바구니 챙기기" : userTextField.text)!)
-//        tableView.reloadData()
-        
         addNewShoppingList()
     }
-    
     
     func addNewShoppingList() {
         let newList = (userTextField.text == "" ? "오늘 하루 감사하기" : userTextField.text)!
@@ -101,7 +125,6 @@ class ShoppingTableViewController: UITableViewController {
     
     // MARK: - 셀의 갯수
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return shoppingList.count
         return tasks.count
     }
     
