@@ -12,7 +12,7 @@ class BackUpTableViewCell: BaseTableViewCell {
     let titleLabel: UILabel = {
        let view = UILabel()
         view.text = "test"
-        view.textColor = Constants.BaseColor.text
+        view.textColor = .black
         view.font = .boldSystemFont(ofSize: 15)
         return view
     }()

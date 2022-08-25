@@ -13,7 +13,8 @@ class BackUpView: BaseView {
         let button = UIButton()
         button.setTitle("백업", for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: 18)
-        button.setTitleColor(UIColor.white, for: .normal)
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.backgroundColor = .yellow
         return button
     }()
     
@@ -21,14 +22,15 @@ class BackUpView: BaseView {
         let button = UIButton()
         button.setTitle("복구", for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: 18)
-        button.setTitleColor(UIColor.white, for: .normal)
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.backgroundColor = .orange
         return button
     }()
     
     let stackView: UIStackView = {
         let stackview = UIStackView()
         stackview.axis = .horizontal
-        stackview.alignment = .top
+        stackview.alignment = .fill
         stackview.distribution = .fillEqually
         stackview.spacing = 10
         return stackview
@@ -42,14 +44,14 @@ class BackUpView: BaseView {
     }()
     
     override func configureUI() {
-        backgroundColor = Constants.BaseColor.background
+        backgroundColor = .white
         
         [stackView, tableView].forEach {
             self.addSubview($0)
         }
         
         [backUpButton, restoreButton].forEach {
-            stackView.addSubview($0)
+            stackView.addArrangedSubview($0)
         }
     }
     

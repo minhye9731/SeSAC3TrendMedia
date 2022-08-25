@@ -40,6 +40,8 @@ class ShoppingTableViewController: UITableViewController {
         hideKeyboardWhenTappedBackground()
         
         tasks = localRealm.objects(UserShoppingList.self).sorted(byKeyPath: "regDate", ascending: false)
+        print("Realm is located at:", localRealm.configuration.fileURL!)
+
         
 //        fetchDocumentZipFile()
     }
@@ -117,7 +119,16 @@ class ShoppingTableViewController: UITableViewController {
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "", image: UIImage(systemName: "arrow.up.arrow.down"), primaryAction: nil, menu: menu)
         
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(moveToBackup))
+        
     }
+    
+    @objc func moveToBackup() {
+        let vc = BackUpViewController()
+        transition(vc, transitionStyle: .push)
+    }
+    
+    
     
     // MARK: - [검색] 버튼 클릭시 액션
     @IBAction func addButtonTapped(_ sender: UIButton) {
@@ -259,13 +270,13 @@ class ShoppingTableViewController: UITableViewController {
         
         if editingStyle == .delete {
             
+            removeImageFromDocument(fileName: "\(tasks[indexPath.row].objectId).jpg")
+            
             try! localRealm.write {
                 localRealm.delete(tasks[indexPath.row])
             }
             
             // index 순서에 맞게 잘 삭제는 되는데, 마지막 cell 삭제시 run time error 발생
-            
-            removeImageFromDocument(fileName: "\(tasks[indexPath.row].objectId).jpg")
             tableView.reloadData()
         }
     }

@@ -10,10 +10,9 @@ import UIKit
 
 extension UIViewController {
     
-    
+    // backup/restore 관련
     func documentDirectoryPath() -> URL? {
         guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil } // Document 경로
-        
         return documentDirectory
     }
     
@@ -57,6 +56,7 @@ extension UIViewController {
         }
     }
     
+    // backup/restore 관련
     func fetchDocumentZipFile() {
         
         do {
