@@ -51,6 +51,7 @@ extension UIViewController {
         do {
             try data.write(to: fileURL)
             print("이미지 저장 완료!")
+            print("\(documentDirectory)")
         } catch let error {
             print("file save error", error)
         }

@@ -59,6 +59,7 @@ class ShoppingTableViewCell: UITableViewCell {
         cellBackground.layer.cornerRadius = 7
         cellBackground.clipsToBounds = true
         cellBackground.backgroundColor = .systemGray6
+        photoImageView.contentMode = .scaleAspectFill
     }
     
     func configureButton() {

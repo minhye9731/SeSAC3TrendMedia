@@ -17,36 +17,10 @@ class ShoppingTableViewController: UITableViewController {
     
     let localRealm = try! Realm()
     
+    var delegate: SelectImageDelegate? // detail화면으로 이미지 전달용 delegate
     var selectedImage: UIImage?
     var objectID: ObjectId?
-    
-    // unsplash photo 표기 설정
-//    var imageDataTask: URLSessionDataTask?
-//    var cache: URLCache = {
-//        let memoryCapacity = 50 * 1024 * 1024
-//        let diskCapacity = 100 * 1024 * 1024
-//        let diskPath = "unsplash"
-//
-//        if #available(iOS 13.0, *) {
-//            return URLCache(
-//                memoryCapacity: memoryCapacity,
-//                diskCapacity: diskCapacity,
-//                directory: URL(fileURLWithPath: diskPath, isDirectory: true)
-//            )
-//        }
-//        else {
-//            #if !targetEnvironment(macCatalyst)
-//            return URLCache(
-//                memoryCapacity: memoryCapacity,
-//                diskCapacity: diskCapacity,
-//                diskPath: diskPath
-//            )
-//            #else
-//            fatalError()
-//            #endif
-//        }
-//    }()
-//
+
     private var photos = [UnsplashPhoto]() // 사진담을 곳?? 필요하가
     
     var tasks: Results<UserShoppingList>! {
@@ -149,28 +123,29 @@ class ShoppingTableViewController: UITableViewController {
     @IBAction func addButtonTapped(_ sender: UIButton) {
         print(#function)
         
+        // 백업화면 임시연결
 //        let vc = BackUpViewController()
 //        transition(vc, transitionStyle: .present)
         
-        addNewShoppingList()
-        presentUnsplashPhotoPicker()
+        addNewShoppingList() // (1) 쇼핑리스트 추가하고
+        presentUnsplashPhotoPicker() // (2) photo 고르러 가고
     }
     
     @IBAction func userTextFieldTapped(_ sender: UITextField) {
         print(#function)
-        addNewShoppingList()
-        presentUnsplashPhotoPicker()
+        addNewShoppingList() // (1) 쇼핑리스트 추가하고
+        presentUnsplashPhotoPicker() // (2) photo 고르러 가고
     }
     
-    // (1) 쇼핑리스트 행추가 & realm 데이터 생성
+    // MARK: - (1) 쇼핑리스트 행추가 & realm 데이터 생성
     func addNewShoppingList() {
-        let newList = (userTextField.text == "" ? "감자" : userTextField.text)!
-        let task = UserShoppingList(shoppingList: newList, regDate: Date()) // => Record
+        let newList = (userTextField.text == "" ? "potato" : userTextField.text)!
+        let task = UserShoppingList(shoppingList: newList, regDate: Date())
         
         // Photo 저장 및 구분용 ObjectID 넣어두기
         self.objectID = task.objectId
         
-        // (Creat) 데이터상 newList 생성
+        // (Creat) newList 추가
         try! localRealm.write {
             localRealm.add(task)
             print("신규 리스트 생성! \(newList)")
@@ -178,36 +153,36 @@ class ShoppingTableViewController: UITableViewController {
             view.endEditing(true)
         }
         
-        // 이미지 픽업 화면으로 이동 -> UNSPLASH picker 로 대체함
+        // 이미지 픽업 vc로 이동 -> UNSPLASH picker로 대체함(2)
 //        let vc = SearchImageViewController()
 //        print("이미지 선택하러 화면이동!")
 //        self.present(vc, animated: true)
     }
     
-    // (2) UNSPLASH picker 열기
+    // MARK: - (2) UNSPLASH picker 열기
     func presentUnsplashPhotoPicker() {
         print("이미지 선택하러 UnsplashPhotoPicker로 화면이동!")
         
         let configuration = UnsplashPhotoPickerConfiguration(
             accessKey: APIKey.UNSPLASH_ACCESSKEY,
             secretKey: APIKey.UNSPLASH_SECRETKEY,
-            query: userTextField.text ?? "감자",
+            query: userTextField.text ?? "potato",
             allowsMultipleSelection: false
         )
         
         let unsplashPhotoPicker = UnsplashPhotoPicker(configuration: configuration)
+        
         unsplashPhotoPicker.photoPickerDelegate = self
 
         present(unsplashPhotoPicker, animated: true, completion: nil)
     }
     
     
-    // MARK: - 셀의 갯수
+    // MARK: - tableView 상세설정
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tasks.count
     }
     
-    // MARK: - 셀의 UI 및 데이터 등록하기
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ShoppingTableViewCell", for: indexPath) as! ShoppingTableViewCell
@@ -225,18 +200,14 @@ class ShoppingTableViewController: UITableViewController {
         }
         
         // 제품 이미지(UNSPLASH picker 이미지 가져오자)
-        // 이게 진행이 안됨. 문제다!
         tasks.forEach {
-            if row == $0.objectId {
+            if row.objectId == $0.objectId {
                 cell.photoImageView.image = loadImageFromDocument(fileName: "\($0.objectId).jpg")
                 print("$\($0.objectId)")
             }
         }
         
-        
-//        cell.photoImageView.image = UIImage(systemName: "xmark")
-        
-        // 라벨 데이터 및 설정
+        // 쇼핑리스트 label
         cell.shoppingListLabel.text = row.shoppingList
         
         // 즐겨찾기 여부
@@ -260,13 +231,23 @@ class ShoppingTableViewController: UITableViewController {
         let detailVC = sb.instantiateViewController(withIdentifier: "ShoppingListDetailViewController") as! ShoppingListDetailViewController
         
         let row = tasks[indexPath.row]
+        let photo = loadImageFromDocument(fileName: "\(row.objectId).jpg")
+        print("indexPath.row 클릭!!: \(indexPath.row)")
+        print("row 클릭!!: \(row)")
         
+//        detailVC.objectIDinCell = row.objectId
+        
+        // 쇼핑리스트 label 넘기기
         detailVC.detailListLbael = row.shoppingList
+        
+        // 쇼핑리스트 photo 넘기기
+        delegate?.sendImageData(image: photo!)
+        
 //        detailVC.productImage.image = loadImageFromDocument(fileName: "\(row.objectId).jpg")
+        
         
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
-    
     
     // MARK: - 셀 편집 가능하도록 설정
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -280,14 +261,14 @@ class ShoppingTableViewController: UITableViewController {
             
             try! localRealm.write {
                 localRealm.delete(tasks[indexPath.row])
-                print("삭제됨 : \(tasks[indexPath.row])")
             }
+            
+            // index 순서에 맞게 잘 삭제는 되는데, 마지막 cell 삭제시 run time error 발생
+            
             removeImageFromDocument(fileName: "\(tasks[indexPath.row].objectId).jpg")
             tableView.reloadData()
         }
     }
-    
-
 }
 
 // MARK: - UnsplashPhotoPickerDelegate
@@ -306,13 +287,9 @@ extension ShoppingTableViewController: UnsplashPhotoPickerDelegate {
                     
                     DispatchQueue.main.async {
                         
-                        // 이미지 자체가 들어오나 보려고 했는데, 들어옹긴 들어옴!!!!!
-                        self?.addButton.setImage(image, for: .normal)
-                        self?.addButton.contentMode = .scaleAspectFit
-                        
                         self?.saveImageToDocument(fileName: "\(objectId).jpg", image: image)
+                        print("선택한 이미지 저장. objectId : \(objectId)")
                         self?.tableView.reloadData()
-                        print("save 이미지 reload 완료")
                     }
                 }
             }
