@@ -28,6 +28,7 @@
 		0E23259428B6AA2000B9592B /* BackUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E23259328B6AA2000B9592B /* BackUpView.swift */; };
 		0E23259628B6AA8300B9592B /* BackUpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E23259528B6AA8300B9592B /* BackUpTableViewCell.swift */; };
 		0E3160C82888E79500DAA4D7 /* TrendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3160C72888E79500DAA4D7 /* TrendTableViewController.swift */; };
+		0E37F70528B7016B00519350 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 0E37F70428B7016B00519350 /* Zip */; };
 		0E78E9D228B3779700AD2B4E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 0E78E9D128B3779700AD2B4E /* Realm */; };
 		0E78E9D428B3779700AD2B4E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0E78E9D328B3779700AD2B4E /* RealmSwift */; };
 		0E78E9D728B3780A00AD2B4E /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E78E9D628B3780A00AD2B4E /* RealmModel.swift */; };
@@ -131,6 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E37F70528B7016B00519350 /* Zip in Frameworks */,
 				0E78E9D428B3779700AD2B4E /* RealmSwift in Frameworks */,
 				0E78E9D228B3779700AD2B4E /* Realm in Frameworks */,
 				0EE605232887AE5F00CC0CE2 /* Toast in Frameworks */,
@@ -339,6 +341,7 @@
 				0E78E9D328B3779700AD2B4E /* RealmSwift */,
 				0E78E9D928B37D1E00AD2B4E /* SnapKit */,
 				0E23258628B66C0D00B9592B /* UnsplashPhotoPicker */,
+				0E37F70428B7016B00519350 /* Zip */,
 			);
 			productName = SeSAC3TrendMedia;
 			productReference = 0EC419A22884DE1000009E39 /* SeSAC3TrendMedia.app */;
@@ -374,6 +377,7 @@
 				0E78E9D028B3779600AD2B4E /* XCRemoteSwiftPackageReference "realm-swift" */,
 				0E78E9D828B37D1E00AD2B4E /* XCRemoteSwiftPackageReference "SnapKit" */,
 				0E23258528B66C0D00B9592B /* XCRemoteSwiftPackageReference "unsplash-photopicker-ios" */,
+				0E37F70328B7016B00519350 /* XCRemoteSwiftPackageReference "Zip" */,
 			);
 			productRefGroup = 0EC419A32884DE1000009E39 /* Products */;
 			projectDirPath = "";
@@ -683,6 +687,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		0E37F70328B7016B00519350 /* XCRemoteSwiftPackageReference "Zip" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marmelroy/Zip";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		0E78E9D028B3779600AD2B4E /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
@@ -722,6 +734,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0E23258528B66C0D00B9592B /* XCRemoteSwiftPackageReference "unsplash-photopicker-ios" */;
 			productName = UnsplashPhotoPicker;
+		};
+		0E37F70428B7016B00519350 /* Zip */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0E37F70328B7016B00519350 /* XCRemoteSwiftPackageReference "Zip" */;
+			productName = Zip;
 		};
 		0E78E9D128B3779700AD2B4E /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;

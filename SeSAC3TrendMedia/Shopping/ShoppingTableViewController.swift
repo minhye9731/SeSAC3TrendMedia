@@ -9,7 +9,6 @@ import UIKit
 import RealmSwift // Realm 1. import RealmSwift
 import UnsplashPhotoPicker
 
-
 class ShoppingTableViewController: UITableViewController {
 
     @IBOutlet weak var topBackground: UIView!
@@ -67,6 +66,8 @@ class ShoppingTableViewController: UITableViewController {
         hideKeyboardWhenTappedBackground()
         
         tasks = localRealm.objects(UserShoppingList.self).sorted(byKeyPath: "regDate", ascending: false)
+        
+//        fetchDocumentZipFile()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -224,9 +225,11 @@ class ShoppingTableViewController: UITableViewController {
         }
         
         // 제품 이미지(UNSPLASH picker 이미지 가져오자)
+        // 이게 진행이 안됨. 문제다!
         tasks.forEach {
             if row == $0.objectId {
                 cell.photoImageView.image = loadImageFromDocument(fileName: "\($0.objectId).jpg")
+                print("$\($0.objectId)")
             }
         }
         
@@ -259,7 +262,7 @@ class ShoppingTableViewController: UITableViewController {
         let row = tasks[indexPath.row]
         
         detailVC.detailListLbael = row.shoppingList
-        detailVC.productImage.image = loadImageFromDocument(fileName: "\(tasks[indexPath.row].objectId).jpg")
+//        detailVC.productImage.image = loadImageFromDocument(fileName: "\(row.objectId).jpg")
         
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
@@ -302,6 +305,11 @@ extension ShoppingTableViewController: UnsplashPhotoPickerDelegate {
                 if let image = UIImage(data: data), let objectId = self!.objectID {
                     
                     DispatchQueue.main.async {
+                        
+                        // 이미지 자체가 들어오나 보려고 했는데, 들어옹긴 들어옴!!!!!
+                        self?.addButton.setImage(image, for: .normal)
+                        self?.addButton.contentMode = .scaleAspectFit
+                        
                         self?.saveImageToDocument(fileName: "\(objectId).jpg", image: image)
                         self?.tableView.reloadData()
                         print("save 이미지 reload 완료")
@@ -326,6 +334,7 @@ extension ShoppingTableViewController: UnsplashPhotoPickerDelegate {
     }
 }
 
+// MARK: - url을 이미지로 바꾸기
 extension ShoppingTableViewController {
     
     func url2Image(URL: URL?) -> UIImage? {
