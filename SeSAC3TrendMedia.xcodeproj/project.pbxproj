@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E1E147E28BB651600B65CF8 /* UserShoppingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E147D28BB651600B65CF8 /* UserShoppingRepository.swift */; };
 		0E23255828B621C100B9592B /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E23255728B621C000B9592B /* FileManager+Extension.swift */; };
-		0E23255B28B6230300B9592B /* SearchImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E23255A28B6230300B9592B /* SearchImageViewController.swift */; };
-		0E23255D28B6234900B9592B /* ImageSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E23255C28B6234900B9592B /* ImageSearchView.swift */; };
 		0E23256028B623A400B9592B /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E23255F28B623A400B9592B /* ReusableProtocol.swift */; };
 		0E23256328B6260900B9592B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E23256228B6260900B9592B /* BaseViewController.swift */; };
 		0E23256528B6261A00B9592B /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E23256428B6261A00B9592B /* BaseView.swift */; };
@@ -17,8 +16,6 @@
 		0E23256928B6265D00B9592B /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E23256828B6265D00B9592B /* BaseTableViewCell.swift */; };
 		0E23256C28B6267D00B9592B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E23256B28B6267D00B9592B /* Color.swift */; };
 		0E23256E28B626B200B9592B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E23256D28B626B200B9592B /* Constants.swift */; };
-		0E23257028B627A900B9592B /* ImageDummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E23256F28B627A900B9592B /* ImageDummyData.swift */; };
-		0E23257228B6280100B9592B /* ImageSearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E23257128B6280100B9592B /* ImageSearchCollectionViewCell.swift */; };
 		0E23257428B6288700B9592B /* Transition+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E23257328B6288700B9592B /* Transition+Extension.swift */; };
 		0E23258728B66C0D00B9592B /* UnsplashPhotoPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 0E23258628B66C0D00B9592B /* UnsplashPhotoPicker */; };
 		0E23258928B66C2F00B9592B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0E23258828B66C2F00B9592B /* .gitignore */; };
@@ -70,9 +67,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E1E147D28BB651600B65CF8 /* UserShoppingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserShoppingRepository.swift; sourceTree = "<group>"; };
 		0E23255728B621C000B9592B /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
-		0E23255A28B6230300B9592B /* SearchImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchImageViewController.swift; sourceTree = "<group>"; };
-		0E23255C28B6234900B9592B /* ImageSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchView.swift; sourceTree = "<group>"; };
 		0E23255F28B623A400B9592B /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
 		0E23256228B6260900B9592B /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		0E23256428B6261A00B9592B /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
@@ -80,8 +76,6 @@
 		0E23256828B6265D00B9592B /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		0E23256B28B6267D00B9592B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		0E23256D28B626B200B9592B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		0E23256F28B627A900B9592B /* ImageDummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDummyData.swift; sourceTree = "<group>"; };
-		0E23257128B6280100B9592B /* ImageSearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		0E23257328B6288700B9592B /* Transition+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transition+Extension.swift"; sourceTree = "<group>"; };
 		0E23258828B66C2F00B9592B /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		0E23258B28B66C6800B9592B /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
@@ -145,17 +139,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0E23255928B622A500B9592B /* ImageSearching */ = {
-			isa = PBXGroup;
-			children = (
-				0E23255A28B6230300B9592B /* SearchImageViewController.swift */,
-				0E23255C28B6234900B9592B /* ImageSearchView.swift */,
-				0E23257128B6280100B9592B /* ImageSearchCollectionViewCell.swift */,
-				0E23256F28B627A900B9592B /* ImageDummyData.swift */,
-			);
-			path = ImageSearching;
-			sourceTree = "<group>";
-		};
 		0E23255E28B6239100B9592B /* Utility */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				0E78E9D628B3780A00AD2B4E /* RealmModel.swift */,
+				0E1E147D28BB651600B65CF8 /* UserShoppingRepository.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -313,7 +297,6 @@
 				0EE6050C28868FEA00CC0CE2 /* ShoppingTableViewCell.swift */,
 				0E94D63828B4E44200113A46 /* ShoppingListDetailViewController.swift */,
 				0E23259028B6A9CF00B9592B /* Backup */,
-				0E23255928B622A500B9592B /* ImageSearching */,
 			);
 			path = Shopping;
 			sourceTree = "<group>";
@@ -425,7 +408,6 @@
 				0EE604FD2886441500CC0CE2 /* SearchViewController.swift in Sources */,
 				0EC419BC2884FE3C00009E39 /* SettingTableViewController.swift in Sources */,
 				0E23257428B6288700B9592B /* Transition+Extension.swift in Sources */,
-				0E23257228B6280100B9592B /* ImageSearchCollectionViewCell.swift in Sources */,
 				0EE6051B28879AAF00CC0CE2 /* RecommendCollectionViewController.swift in Sources */,
 				0E3160C82888E79500DAA4D7 /* TrendTableViewController.swift in Sources */,
 				0EE6050528864DA500CC0CE2 /* BucketlistTableViewCell.swift in Sources */,
@@ -434,7 +416,6 @@
 				0EC419C22885536D00009E39 /* SettingAsTaskTableViewController.swift in Sources */,
 				0E23259228B6AA0600B9592B /* BackUpViewController.swift in Sources */,
 				0E23259428B6AA2000B9592B /* BackUpView.swift in Sources */,
-				0E23257028B627A900B9592B /* ImageDummyData.swift in Sources */,
 				0EE605132886C45600CC0CE2 /* SearchTableViewController.swift in Sources */,
 				0EE605012886479B00CC0CE2 /* UITextField+Extension.swift in Sources */,
 				0E23258C28B66C6800B9592B /* APIKey.swift in Sources */,
@@ -448,13 +429,12 @@
 				0EE604FF2886451F00CC0CE2 /* UIViewController+Extension.swift in Sources */,
 				0EC419A82884DE1000009E39 /* SceneDelegate.swift in Sources */,
 				0E23256028B623A400B9592B /* ReusableProtocol.swift in Sources */,
-				0E23255B28B6230300B9592B /* SearchImageViewController.swift in Sources */,
 				0E23256728B6264E00B9592B /* BaseCollectionViewCell.swift in Sources */,
 				0EE6050F2886901900CC0CE2 /* ShoppingTableViewController.swift in Sources */,
 				0E78E9D728B3780A00AD2B4E /* RealmModel.swift in Sources */,
+				0E1E147E28BB651600B65CF8 /* UserShoppingRepository.swift in Sources */,
 				0E94D63928B4E44300113A46 /* ShoppingListDetailViewController.swift in Sources */,
 				0E23256528B6261A00B9592B /* BaseView.swift in Sources */,
-				0E23255D28B6234900B9592B /* ImageSearchView.swift in Sources */,
 				0E23256328B6260900B9592B /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

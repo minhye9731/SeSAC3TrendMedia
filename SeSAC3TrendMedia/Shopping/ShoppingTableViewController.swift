@@ -15,7 +15,7 @@ class ShoppingTableViewController: UITableViewController {
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var addButton: UIButton!
     
-    let localRealm = try! Realm()
+    let repository = UserShoppingRepository()
     
     var delegate: SelectImageDelegate? // detail화면으로 이미지 전달용 delegate
     var selectedImage: UIImage?
@@ -39,7 +39,7 @@ class ShoppingTableViewController: UITableViewController {
         tableView.rowHeight = 120
         hideKeyboardWhenTappedBackground()
         
-        tasks = localRealm.objects(UserShoppingList.self).sorted(byKeyPath: "regDate", ascending: false)
+        tasks = repository.sort("regDate")
         print("Realm is located at:", localRealm.configuration.fileURL!)
 
         
@@ -101,13 +101,13 @@ class ShoppingTableViewController: UITableViewController {
         var menuItems: [UIAction] {
             return [
                 UIAction(title: "쇼핑 리스트 기준으로 정렬하기", image: UIImage(systemName: "line.3.horizontal.decrease.circle"), handler: { _ in
-                    self.tasks = self.localRealm.objects(UserShoppingList.self).sorted(byKeyPath: "shoppingList", ascending: true)
+                    self.tasks = self.repository.sort("shoppingList")
                     }),
                 UIAction(title: "즐겨찾기 항목 필터링하기", image: UIImage(systemName: "star.fill"), handler: { _ in
-                    self.tasks = self.localRealm.objects(UserShoppingList.self).filter("favorite == true")
+                    self.tasks = self.repository.filter("favorite")
                 }),
                 UIAction(title: "구매완료 항목 필터링하기", image: UIImage(systemName: "checkmark.square"), handler: { _ in
-                    self.tasks = self.localRealm.objects(UserShoppingList.self).filter("doneCheck == true")
+                    self.tasks = self.repository.filter("doneCheck")
                 }),
                 UIAction(title: "취소", attributes: .destructive, handler: { _ in print("취소버튼 클릭")})
             ]
@@ -129,14 +129,9 @@ class ShoppingTableViewController: UITableViewController {
     }
     
     
-    
     // MARK: - [검색] 버튼 클릭시 액션
     @IBAction func addButtonTapped(_ sender: UIButton) {
         print(#function)
-        
-        // 백업화면 임시연결
-//        let vc = BackUpViewController()
-//        transition(vc, transitionStyle: .present)
         
         addNewShoppingList() // (1) 쇼핑리스트 추가하고
         presentUnsplashPhotoPicker() // (2) photo 고르러 가고
@@ -157,17 +152,8 @@ class ShoppingTableViewController: UITableViewController {
         self.objectID = task.objectId
         
         // (Creat) newList 추가
-        try! localRealm.write {
-            localRealm.add(task)
-            print("신규 리스트 생성! \(newList)")
-            tableView.reloadData()
-            view.endEditing(true)
-        }
+        repository.addItem(item: task)
         
-        // 이미지 픽업 vc로 이동 -> UNSPLASH picker로 대체함(2)
-//        let vc = SearchImageViewController()
-//        print("이미지 선택하러 화면이동!")
-//        self.present(vc, animated: true)
     }
     
     // MARK: - (2) UNSPLASH picker 열기
@@ -204,13 +190,11 @@ class ShoppingTableViewController: UITableViewController {
         cell.checkBoxButton.setImage(checkImage, for: .normal)
         
         cell.checkBoxButtonTapped = {
-            try! self.localRealm.write {
-                row.doneCheck = !row.doneCheck
-                tableView.reloadData()
-            }
+            self.repository.updateDoneCheck(item: row)
         }
         
         // 제품 이미지(UNSPLASH picker 이미지 가져오자)
+        // 여기 간략하게 수정해야해
         tasks.forEach {
             if row.objectId == $0.objectId {
                 cell.photoImageView.image = loadImageFromDocument(fileName: "\($0.objectId).jpg")
@@ -226,10 +210,7 @@ class ShoppingTableViewController: UITableViewController {
         cell.bookMarkButton.setImage(starImage, for: .normal)
         
         cell.bookMarkButtonTapped = {
-            try! self.localRealm.write {
-                row.favorite = !row.favorite
-                tableView.reloadData()
-            }
+            self.repository.updateFavorite(item: row)
         }
         
         return cell
@@ -268,15 +249,13 @@ class ShoppingTableViewController: UITableViewController {
     // MARK: - 우측 스와이프 디폴트 기능
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
+        let row = tasks[indexPath.row]
+        
         if editingStyle == .delete {
             
-            removeImageFromDocument(fileName: "\(tasks[indexPath.row].objectId).jpg")
+            self.repository.deleteItem(item: row)
             
-            try! localRealm.write {
-                localRealm.delete(tasks[indexPath.row])
-            }
-            
-            // index 순서에 맞게 잘 삭제는 되는데, 마지막 cell 삭제시 run time error 발생
+            // index 순서에 맞게 잘 삭제는 되는데, 마지막 cell 삭제시 run time error 발생이슈 있었음
             tableView.reloadData()
         }
     }
@@ -343,3 +322,10 @@ extension ShoppingTableViewController {
 
 }
 
+// MARK: - 기타 함수들
+extension ShoppingTableViewController {
+    
+    
+    
+    
+}

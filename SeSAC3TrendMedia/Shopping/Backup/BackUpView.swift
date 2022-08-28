@@ -40,6 +40,7 @@ class BackUpView: BaseView {
         let tableView = UITableView()
         tableView.backgroundColor = .clear
         tableView.rowHeight = 50
+        tableView.register(BackUpTableViewCell.self, forCellReuseIdentifier: BackUpTableViewCell.reuseIdentifier)
         return tableView
     }()
     

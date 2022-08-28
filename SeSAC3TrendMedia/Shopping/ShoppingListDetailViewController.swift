@@ -20,7 +20,6 @@ class ShoppingListDetailViewController: UIViewController {
     @IBOutlet weak var productImage: UIImageView!
     
     var detailListLbael = "test"
-//    var objectIDinCell: ObjectId?
 
     override func viewDidLoad() {
         super.viewDidLoad()
